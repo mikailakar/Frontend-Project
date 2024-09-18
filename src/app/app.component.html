@@ -1,11 +1,9 @@
 <div class="app-container">
-  <!-- Top Navigation Bar -->
   <div class="top-bar">
     <button class="menu-icon">
       <i class="fa fa-bars"></i>
     </button>
   
-    <!-- Search Input with (keyup.enter)="searchWord()" -->
     <input
       type="text"
       class="form-control search-input"
@@ -19,11 +17,9 @@
     </button>
   </div>
   
-  <!-- Optional Search Button -->
   <button (click)="searchWord()">Search</button>
   
 
-  <!-- Word Display Section -->
   <div *ngIf="wordDetails" class="word-section">
     <h1 class="word">{{ wordDetails[0].word }}</h1>
     <div class="word-icons">
@@ -37,7 +33,6 @@
     <p><strong>Synonyms:</strong> {{ wordDetails[0].meanings[0].synonyms.join(', ') }}</p>
   </div>
 
-  <!-- Definitions Section -->
   <div *ngFor="let meaning of wordDetails[0].meanings" class="definition-section">
     <p><strong>{{ meaning.partOfSpeech }}</strong></p>
     <ul>
@@ -47,7 +42,6 @@
     </ul>
   </div>
 
-  <!-- Floating Action Button -->
   <button class="floating-btn">
     <i class="fa fa-home"></i>
   </button>
