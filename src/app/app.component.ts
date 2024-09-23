@@ -14,22 +14,19 @@ export class AppComponent implements OnInit {
 
   constructor(
     private router: Router,
-    //private route: ActivatedRoute,
     private dictionaryService: DictionaryService
   ) {}
 
   ngOnInit(): void {
-    //console.log(this.location.path());//Ang
-    //console.log(window.location.href, this.router);//JS
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
       const match = this.router.url.match(/^\/en\/(.+)/);
-      const searchTerm = match ? match[1] : "";
+      const searchTerm = match ? match[1] : '';
       if (searchTerm) {
         this.word = searchTerm;
         this.performSearch(this.word);
-      }else if (searchTerm == "") {
+      }else if (searchTerm == '') {
         this.word = '';
         this.wordDetails = null;
       }
@@ -39,10 +36,7 @@ export class AppComponent implements OnInit {
   searchWord(word?: string): void {
     const searchTerm = word || this.word;
     if (searchTerm.trim()) {
-      this.router.navigate(['/en', searchTerm])/*.then(() => {
-        this.word = searchTerm;
-        this.performSearch(searchTerm);
-      })*/;
+      this.router.navigate(['/en', searchTerm]);
     }
   }
 
