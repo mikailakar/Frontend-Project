@@ -1,4 +1,3 @@
-/* Main App Container */
 .app-container {
     display: flex;
     flex-direction: column;
@@ -94,3 +93,16 @@
     cursor: pointer;
   }
   
+  .link-btn {
+    background: none;
+    border: none;
+    color: blue;
+    padding: 0;
+    margin: 0;
+  }
+
+  .search-btn {
+    background: none;
+    border: none;
+    color: white;
+  }

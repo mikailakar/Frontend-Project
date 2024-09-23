@@ -1,9 +1,5 @@
 <div class="app-container">
-  <div class="top-bar">
-    <button class="menu-icon">
-      <i class="fa fa-bars"></i>
-    </button>
-  
+  <div class="top-bar">  
     <input
       type="text"
       class="form-control search-input"
@@ -12,34 +8,42 @@
       (keyup.enter)="searchWord()"
     />
   
-    <button class="mic-icon">
-      <i class="fa fa-microphone"></i>
+    <button (click)="searchWord()" class="search-btn">
+      <i class="fa fa-search"></i>
     </button>
   </div>
-  
-  <button (click)="searchWord()">Search</button>
   
 
   <div *ngIf="wordDetails" class="word-section">
     <h1 class="word">{{ wordDetails[0].word }}</h1>
     <div class="word-icons">
       <i class="fa fa-heart"></i>
-      <i class="fa fa-share-alt"></i>
     </div>
     <p class="word-pronunciation">
       {{ wordDetails[0].phonetics[0]?.text }}
       <audio *ngIf="wordDetails[0].phonetics[0]?.audio" controls [src]="wordDetails[0].phonetics[0]?.audio"></audio>
     </p>
-    <p><strong>Synonyms:</strong> {{ wordDetails[0].meanings[0].synonyms.join(', ') }}</p>
   </div>
 
-  <div *ngFor="let meaning of wordDetails[0].meanings" class="definition-section">
+  <div *ngIf="wordDetails" class="definition-section">
+  <div *ngFor="let meaning of wordDetails[0].meanings">
+    <p>Synonyms: 
+      <span *ngFor="let synonym of wordDetails[0].meanings[0].synonyms; let isLast = last">
+        <button class="link-btn" (click)="searchWord(synonym)">{{ synonym }}</button>
+        <span *ngIf="!isLast">, </span>
+      </span>
+    </p>
     <p><strong>{{ meaning.partOfSpeech }}</strong></p>
     <ul>
       <li *ngFor="let definition of meaning.definitions">
         {{ definition.definition }}
       </li>
     </ul>
+  </div>
+</div>
+
+  <div *ngIf="!wordDetails">
+    <p>FrontendProject</p>
   </div>
 
   <button class="floating-btn">
