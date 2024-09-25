@@ -58,8 +58,6 @@ export class AppComponent implements OnInit {
     if (!this.wordDetails || !this.wordDetails.length) {
       return false;
     }
-
-    // Check if any meanings contain synonyms
     for (let detail of this.wordDetails) {
       for (let meaning of detail.meanings) {
         if (meaning.synonyms && meaning.synonyms.length > 0) {
@@ -67,7 +65,6 @@ export class AppComponent implements OnInit {
         }
       }
     }
-
     return false;
   }
 
