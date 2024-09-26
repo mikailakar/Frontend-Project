@@ -28,14 +28,14 @@
 
   <div *ngIf="wordDetails" class="synonyms">
     <p *ngIf="hasSynonyms()">Synonyms:
-      <span *ngFor="let detail of wordDetails; let isLast3 = last; let j = index">
-        <span *ngFor="let meaning of detail.meanings; let isLast2 = last; let i = index">
-          <span *ngFor="let synonym of meaning.synonyms; let isLast = last">
+      <ng-template [ngIf]="!first">{{resetFirst()}}</ng-template>
+      <span *ngFor="let detail of wordDetails">
+        <span *ngFor="let meaning of detail.meanings">
+          <span *ngFor="let synonym of meaning.synonyms">
+            <span *ngIf="!first">, </span>
             <button class="link-btn" (click)="searchWord(synonym)">{{ synonym }}</button>
-            <span *ngIf="!isLast">, </span>
+            <ng-template [ngIf]="first">{{resetFirst()}}</ng-template>
           </span>
-          <span *ngIf="!isLast2 && meaning.synonyms!='' && detail.meanings[i+1].synonyms!=''">, </span>
-          <span *ngIf="isLast2 && !isLast3 && wordDetails[j+1].meanings[0].synonyms!=''">, </span>
         </span>
       </span>
     </p>

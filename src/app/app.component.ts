@@ -11,6 +11,11 @@ import { filter } from 'rxjs/operators';
 export class AppComponent implements OnInit {
   word: string = '';
   wordDetails: any;
+  first = true;
+
+  resetFirst() {
+    this.first = !this.first;
+  }
 
   @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
 
