@@ -11,10 +11,13 @@
   <div *ngIf="wordDetails" class="word-section">
     <h1 class="word">{{ wordDetails[0].word }}</h1>
     <div class="word-icons">
-      <i class="fa fa-heart"></i>
+      <i class="fa fa-heart" [class.favorited]="isFavorite" (click)="addToFavorites(word)"></i>
+    </div>
+    <div *ngIf="showNotification" class="notification">
+      {{ notificationMessage }}
     </div>
   </div>
-  <div class="line-break"></div>
+  <div *ngIf="wordDetails" class="line-break"></div>
   <div *ngIf="wordDetails" class="word-section-det">
     <span class="word-category">{{ wordDetails[0].meanings[0].partOfSpeech }}</span>
     <p class="word-pronunciation">
@@ -62,11 +65,15 @@
     </div>
   </div>
 
-  <div *ngIf="!wordDetails">
+  <div *ngIf="!wordDetails && !favoritesPage">
     <p>FrontendProject</p>
   </div>
 
-  <button class="floating-btn">
-    <i class="fa fa-home"></i>
+  <div *ngIf="favoritesPage">
+    <router-outlet></router-outlet>
+  </div>
+
+  <button class="floating-btn" (click)="goToFavorites()">
+    <i class="fa fa-star"></i>
   </button>
 </div>

@@ -6,10 +6,13 @@ import { AppComponent } from './app.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { FavoritesComponent } from './favorites/favorites.component';
+import { FavoritesService } from './favorites.service';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    FavoritesComponent
   ],
   imports: [
     HttpClientModule,
@@ -17,7 +20,7 @@ import { FormsModule } from '@angular/forms';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [],
+  providers: [FavoritesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
