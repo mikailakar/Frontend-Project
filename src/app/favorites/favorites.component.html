@@ -1,5 +1,13 @@
-<h2>Favorites</h2>
-<div *ngFor="let favorite of favorites">
-    <div>{{ favorite }}</div>
+<h2 class="page-title">Favorites</h2>
+<div *ngFor="let item of favorites; let i = index" class="favorite-item">
+  <span>{{ item }}</span>
+  <i class="fa fa-trash" (click)="confirmRemoval(item, i)" style="cursor: pointer; color: red;"></i>
 </div>
-  
+<div *ngIf="showToast" class="toast show align-items-center text-bg-danger border-0" style="position: fixed; top: 20px; right: 20px;">
+  <div class="d-flex">
+    <div class="toast-body">
+      {{ toastMessage }}
+    </div>
+    <button type="button" class="btn-close btn-close-white me-2 m-auto" (click)="showToast = false;"></button>
+  </div>
+</div>

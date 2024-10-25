@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FavoritesService {
   private favorites: any[] = [];
+  private favoritesSubject = new BehaviorSubject<string[]>(this.favorites);
+
+  favorites$ = this.favoritesSubject.asObservable();
 
   constructor() {
     this.loadFavorites();
@@ -28,6 +32,7 @@ export class FavoritesService {
 
   private saveFavorites(): void {
     localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    this.favoritesSubject.next(this.favorites);
   }
 
   private loadFavorites(): void {

@@ -147,6 +147,32 @@
     cursor: pointer;
   }
   
+  .floating-btn2 {
+    position: fixed;
+    top: 150px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
+  .floating-btn3 {
+    position: fixed;
+    top: 220px;
+    right: 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 15px;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+  
   .link-btn {
     background: none;
     border: none;

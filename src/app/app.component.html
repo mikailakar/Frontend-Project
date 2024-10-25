@@ -8,13 +8,15 @@
 </header>
 <div class="app-container">
 
+  <div *ngIf="showNotification" class="notification">
+    {{ notificationMessage }}
+  </div>
+  <app-loading-spinner></app-loading-spinner>
+
   <div *ngIf="wordDetails" class="word-section">
     <h1 class="word">{{ wordDetails[0].word }}</h1>
     <div class="word-icons">
       <i class="fa fa-heart" [class.favorited]="isFavorite" (click)="addToFavorites(word)"></i>
-    </div>
-    <div *ngIf="showNotification" class="notification">
-      {{ notificationMessage }}
     </div>
   </div>
   <div *ngIf="wordDetails" class="line-break"></div>
@@ -65,15 +67,31 @@
     </div>
   </div>
 
-  <div *ngIf="!wordDetails && !favoritesPage">
+  <div *ngIf="homePage">
     <p>FrontendProject</p>
   </div>
 
-  <div *ngIf="favoritesPage">
+  <div *ngIf="favoritesPage || signupPage">
     <router-outlet></router-outlet>
   </div>
 
-  <button class="floating-btn" (click)="goToFavorites()">
-    <i class="fa fa-star"></i>
-  </button>
+  <div *ngIf="pipesPage">
+    <app-pipes-demo></app-pipes-demo>
+  </div>
+
+  <div *ngIf="!favoritesPage">
+    <button class="floating-btn" (click)="goToFavorites()">
+      <i class="fa fa-star"></i>
+    </button>
+  </div>
+  <div *ngIf="!signupPage">
+    <button class="floating-btn2" (click)="goToSignup()">
+      <i class="fa fa-sign-in"></i>
+    </button>
+  </div>
+  <div *ngIf="!pipesPage">
+    <button class="floating-btn3" (click)="goToPipes()">
+      <i class="fa fa-user"></i>
+    </button>
+  </div>
 </div>

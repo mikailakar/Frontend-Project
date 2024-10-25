@@ -1,13 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DictionaryService {
 
-  private apiUrl = 'https://api.dictionaryapi.dev/api/v2/entries/en/';
+  private apiUrl = environment.apiUrls.wordsApiUrl;
 
   constructor(private http: HttpClient) { }
 
