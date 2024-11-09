@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef, Renderer2 } from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { DictionaryService } from './dictionary.service';
 import { filter, catchError } from 'rxjs/operators';
@@ -21,7 +21,7 @@ export class AppComponent implements OnInit {
   wordDetails: any;
   favoritesPage: any;
   isFavorite: boolean = false;
-  first = true;
+  first: boolean = true;
   notificationMessage: string = '';
   showNotification: boolean = false;
   private notificationTimeout: any;
@@ -29,9 +29,10 @@ export class AppComponent implements OnInit {
   signupPage: any;
   homePage: any;
   pipesPage: any;
+  isDarkMode = false;
 
   resetFirst() {
-    this.first = !this.first;
+    this.first = false;
   }
 
   @ViewChild('audioPlayer', { static: false }) audioPlayer!: ElementRef<HTMLAudioElement>;
@@ -40,7 +41,8 @@ export class AppComponent implements OnInit {
   constructor(
     private router: Router,
     private dictionaryService: DictionaryService,
-    private favoritesService: FavoritesService
+    private favoritesService: FavoritesService,
+    private renderer: Renderer2
   ) {}
 
   ngOnInit(): void {
@@ -78,6 +80,15 @@ export class AppComponent implements OnInit {
     this.pipesPage = match4 ? true : false;
     const match5 = this.router.url.match(/^\/$/);
     this.homePage = match5 ? true : false;
+  }
+
+  darkMod(): void{
+    this.isDarkMode = !this.isDarkMode;
+    if (this.isDarkMode) {
+      this.renderer.addClass(document.body, 'dark-theme');
+    } else {
+      this.renderer.removeClass(document.body, 'dark-theme');
+    }
   }
 
   goToSignup(): void {
@@ -155,6 +166,7 @@ export class AppComponent implements OnInit {
     for (let detail of this.wordDetails) {
       for (let meaning of detail.meanings) {
         if (meaning.synonyms && meaning.synonyms.length > 0) {
+          this.first = true;
           return true;
         }
       }

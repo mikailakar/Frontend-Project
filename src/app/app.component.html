@@ -33,7 +33,6 @@
 
   <div *ngIf="wordDetails" class="synonyms">
     <p *ngIf="hasSynonyms()">Synonyms:
-      <ng-template [ngIf]="!first">{{resetFirst()}}</ng-template>
       <span *ngFor="let detail of wordDetails">
         <span *ngFor="let meaning of detail.meanings">
           <span *ngFor="let synonym of meaning.synonyms">
@@ -94,4 +93,7 @@
       <i class="fa fa-user"></i>
     </button>
   </div>
+  <button class="floating-btn4" (click)="darkMod()">
+    <i class="fa fa-sun"></i>
+  </button>
 </div>
