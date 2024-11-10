@@ -29,6 +29,7 @@ export class AppComponent implements OnInit {
   signupPage: any;
   homePage: any;
   pipesPage: any;
+  isDarkMode: boolean = false;
 
   resetFirst() {
     this.first = false;
@@ -45,6 +46,10 @@ export class AppComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    const savedTheme = localStorage.getItem('darkMode');
+    if(savedTheme === 'true'){
+      this.toggleDarkTheme();
+    }
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
@@ -180,5 +185,7 @@ export class AppComponent implements OnInit {
 
   toggleDarkTheme(): void {
     document.body.classList.toggle('dark-theme');
+    this.isDarkMode = !this.isDarkMode;
+    localStorage.setItem('darkMode', this.isDarkMode.toString());
  }
 }

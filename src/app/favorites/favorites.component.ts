@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FavoritesService } from '../favorites.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-favorites',
@@ -12,14 +13,18 @@ export class FavoritesComponent implements OnInit {
   showToast: boolean = false;
   toastMessage: string = '';
 
-  constructor(private favoritesService: FavoritesService) {}
+  constructor(private favoritesService: FavoritesService, private router: Router) {}
 
   ngOnInit(): void {
     this.favorites = this.favoritesService.getFavorites();
-    this.favoritesService.favorites$.subscribe(favorites => {
+    /*this.favoritesService.favorites$.subscribe(favorites => {
       this.favoritesListDebug = favorites;
       console.log('Favorites updated:', this.favoritesListDebug);
-    });
+    });*/
+  }
+
+  navigateToWord(word: string) {
+    this.router.navigate([`/en/${word}`]);
   }
 
   confirmRemoval(item: string, index: number): void {
