@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+body {
+  --text-color: #434D65;
+  --bkg-color: #f8f9fa;
+  --theme-color: #1D93F3;
+  --btn-color: white;
+  --btn-bg-color: #007bff;
+  --search-text: #646464;
+  --search-bg: #F2F2F2;
+  --favorite-bg: #f8f9fa;
+  --favorite-border: #ddd;
+  --spinner-bg: rgba(255, 255, 255, 0.8);
+  --spinner-border: #f3f3f3;
+  --spinner-color: #3498db;
+  --form-bg: #fff;
+}
+body.dark-theme {
+  --text-color: #eee;
+  --bkg-color: #252222;
+  --theme-color: #0f4570;
+  --btn-color: rgb(200, 200, 200);
+  --btn-bg-color: #013368;
+  --search-text: #8a8a8a;
+  --search-bg: #252525;
+  --favorite-bg: #313233;
+  --favorite-border: #000000;
+  --spinner-bg: rgb(0, 0, 0, 0.8);
+  --spinner-border: #3b3b3b;
+  --spinner-color: #236794;
+  --form-bg: #464646;
+}

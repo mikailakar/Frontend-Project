@@ -29,7 +29,6 @@ export class AppComponent implements OnInit {
   signupPage: any;
   homePage: any;
   pipesPage: any;
-  isDarkMode = false;
 
   resetFirst() {
     this.first = false;
@@ -80,15 +79,6 @@ export class AppComponent implements OnInit {
     this.pipesPage = match4 ? true : false;
     const match5 = this.router.url.match(/^\/$/);
     this.homePage = match5 ? true : false;
-  }
-
-  darkMod(): void{
-    this.isDarkMode = !this.isDarkMode;
-    if (this.isDarkMode) {
-      this.renderer.addClass(document.body, 'dark-theme');
-    } else {
-      this.renderer.removeClass(document.body, 'dark-theme');
-    }
   }
 
   goToSignup(): void {
@@ -187,4 +177,8 @@ export class AppComponent implements OnInit {
       this.audioPlayer.nativeElement.play();
     }
   }
+
+  toggleDarkTheme(): void {
+    document.body.classList.toggle('dark-theme');
+ }
 }

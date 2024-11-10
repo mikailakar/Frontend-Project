@@ -14,7 +14,7 @@ import { Component } from '@angular/core';
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(255, 255, 255, 0.8);
+      background: var(--spinner-bg);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -22,8 +22,8 @@ import { Component } from '@angular/core';
     }
 
     .spinner {
-      border: 8px solid #f3f3f3; /* Light grey */
-      border-top: 8px solid #3498db; /* Blue */
+      border: 8px solid var(--spinner-border);
+      border-top: 8px solid var(--spinner-color);
       border-radius: 50%;
       width: 60px;
       height: 60px;
