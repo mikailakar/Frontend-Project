@@ -1,6 +1,6 @@
 <h2 class="page-title">{{ 'PAGE_TITLE.FAVORITES' | translate }}</h2>
-<div *ngFor="let item of favorites; let i = index" class="favorite-item" style="cursor: pointer" (click)="navigateToWord(item)">
-  <span>{{ item }}</span>
+<div *ngFor="let item of favorites; let i = index" class="favorite-item">
+  <span class="fitem" style="cursor: pointer" (click)="navigateToWord(item)">{{ item }}</span>
   <i class="fa fa-trash" 
      (click)="confirmRemoval(item, i); $event.stopImmediatePropagation()" style="cursor: pointer; color: red;"></i>
 </div>
