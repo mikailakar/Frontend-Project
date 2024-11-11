@@ -5,6 +5,7 @@ import { filter, catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
 import { FavoritesService } from './favorites.service';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
+import { TranslateService } from '@ngx-translate/core';
 
 interface Notification {
   id: number;
@@ -30,6 +31,8 @@ export class AppComponent implements OnInit {
   homePage: any;
   pipesPage: any;
   isDarkMode: boolean = false;
+  lang: string = "en";
+  name: string = 'username';
 
   resetFirst() {
     this.first = false;
@@ -42,17 +45,26 @@ export class AppComponent implements OnInit {
     private router: Router,
     private dictionaryService: DictionaryService,
     private favoritesService: FavoritesService,
-    private renderer: Renderer2
-  ) {}
+    private renderer: Renderer2,
+    private translate: TranslateService) {
+      const browserLang = this.translate.getBrowserLang() ?? 'en';
+      this.translate.use(browserLang.match(/en|tr/) ? browserLang : 'en');
+    }
 
   ngOnInit(): void {
+    const username = localStorage.getItem('username');
+    this.name = username? username : "username";
     const savedTheme = localStorage.getItem('darkMode');
     if(savedTheme === 'true'){
       this.toggleDarkTheme();
     }
+    const savedLang = localStorage.getItem('language');
+    this.lang = savedLang ? savedLang : "en";
+    this.translate.use(this.lang);
     this.router.events
     .pipe(filter(event => event instanceof NavigationEnd))
     .subscribe(() => {
+      this.translate.use(this.lang);
       this.resetMatch();
       const match = this.router.url.match(/^\/en\/(.+)/);
       const searchTerm = match ? match[1] : '';
@@ -60,12 +72,24 @@ export class AppComponent implements OnInit {
         this.word = searchTerm.replace('%20', ' ');
         this.performSearch(searchTerm);
       }else if (searchTerm == '') {
+        const username2 = localStorage.getItem('username');
+        this.name = username2? username2 : "username";
         this.word = '';
         this.wordDetails = null;
         this.isFavorite = false;
         this.match();
       }
     });
+  }
+
+  changeLanguage(): void {
+    if(this.lang == "en"){
+      this.lang = "tr";
+    }else{
+      this.lang = "en";
+    }
+    this.translate.use(this.lang);
+    localStorage.setItem('language', this.lang);
   }
 
   resetMatch(): void {
@@ -99,14 +123,17 @@ export class AppComponent implements OnInit {
   }
   
   addToFavorites(item: string): void {
+    const addedMessage = this.translate.instant('NOTIFICATIONS.ADDED_TO_FAVORITES');
+    const removedMessage = this.translate.instant('NOTIFICATIONS.REMOVED_FROM_FAVORITES');
+
     if (this.isFavorite) {
       this.favoritesService.removeFromFavorites(item);
       this.isFavorite = false;
-      this.createNotification('Removed from favorites!');
+      this.createNotification(removedMessage);
     } else {
       this.favoritesService.addToFavorites(item);
       this.isFavorite = true;
-      this.createNotification('Added to favorites!');
+      this.createNotification(addedMessage);
     } 
   }
 

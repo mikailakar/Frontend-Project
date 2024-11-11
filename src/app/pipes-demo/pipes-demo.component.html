@@ -1,7 +1,7 @@
 <div *ngFor="let item of items">
   <h3>{{ item.name | titlecase }}</h3>
-  <p>Currency: {{ item.currency | currency: 'USD' }}</p>
-  <p>Date: {{ item.date | date: 'fullDate' }}</p>
-  <p>Uppercase Name: {{ item.name | uppercase }}</p>
-  <p>Lowercase Name: {{ item.name | lowercase }}</p>
+  <p>{{ 'PIPES.CURRENCY' | translate }}: {{ item.currency | currency: 'USD' }}</p>
+  <p>{{ 'PIPES.DATE' | translate }}: {{ item.date | date: 'fullDate' }}</p>
+  <p>{{ 'PIPES.UPPER' | translate }}: {{ item.name | uppercase }}</p>
+  <p>{{ 'PIPES.LOWER' | translate }}: {{ item.name | lowercase }}</p>
 </div>

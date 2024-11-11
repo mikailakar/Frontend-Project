@@ -203,6 +203,19 @@
   cursor: pointer;
 }
 
+.floating-btn5 {
+  position: fixed;
+  top: 360px;
+  right: 20px;
+  background-color: var(--btn-bg-color);
+  color: var(--btn-color);
+  border: none;
+  border-radius: 50%;
+  padding: 15px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
 .link-btn {
   background: none;
   border: none;

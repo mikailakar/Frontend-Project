@@ -1,4 +1,4 @@
-<h2 class="page-title">Favorites</h2>
+<h2 class="page-title">{{ 'PAGE_TITLE.FAVORITES' | translate }}</h2>
 <div *ngFor="let item of favorites; let i = index" class="favorite-item" style="cursor: pointer" (click)="navigateToWord(item)">
   <span>{{ item }}</span>
   <i class="fa fa-trash" 

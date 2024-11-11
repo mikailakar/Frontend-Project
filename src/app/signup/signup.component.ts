@@ -59,10 +59,13 @@ export class SignupComponent implements OnInit {
 
   onSubmit() {
     if (this.signupForm.valid) {
+      localStorage.setItem('username', this.signupForm.get('name')?.value);
       this.submittedData = this.signupForm.value;
       this.cityData = this.cities.find(city => city.id == this.submittedData.city);
       this.districtData = this.cityData.districts.find((district: { id: any; }) => district.id == this.submittedData.district);
       this.signupForm.reset();
+      this.signupForm.get('city')?.setValue('');
+      this.signupForm.get('district')?.setValue('');
     }
   }
 }

@@ -1,0 +1,38 @@
+{
+  "WELCOME_MESSAGE": "Welcome {{name}}!",
+  "LANG": "EN",
+  "PAGE_TITLE": {
+    "FAVORITES": "Favorites",
+    "SIGNUP": "Sign Up"
+  },
+  "NOTIFICATIONS": {
+    "ADDED_TO_FAVORITES": "Added to favorites!",
+    "REMOVED_FROM_FAVORITES": "Removed from favorites!",
+    "REMOVED": "\"{{item}}\" removed from Favorites"
+  },
+  "CONFIRM": {
+    "REMOVE": "Are you sure you want to remove \"{{item}}\" from favorites?"
+  },
+  "FORM": {
+    "NAME": "Name",
+    "NUMBER": "Number",
+    "EMAIL": "Email",
+    "PASSWORD": "Password",
+    "CITY": "City",
+    "DISTRICT": "District",
+    "SELECT_CITY": "Select a city",
+    "SELECT_DISTRICT": "Select a district",
+    "SUBMIT": "Submit",
+    "SUBMITTED_DATA": "Submitted Data",
+    "NAME_REQUIRED": "Name is required.",
+    "NUMBER_REQUIRED": "Must be 10 digits long.",
+    "EMAIL_REQUIRED": "Invalid email format.",
+    "PASSWORD_REQUIRED": "Password is required."
+  },
+  "PIPES": {
+    "CURRENCY": "Currency",
+    "DATE": "Date",
+    "UPPER": "Uppercase Name",
+    "LOWER": "Lowercase Name"
+  }
+}

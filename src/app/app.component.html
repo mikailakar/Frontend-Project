@@ -67,7 +67,7 @@
   </div>
 
   <div *ngIf="homePage">
-    <p>FrontendProject</p>
+    <h2>{{ 'WELCOME_MESSAGE' | translate: { name: name } }}</h2>
   </div>
 
   <div *ngIf="favoritesPage || signupPage">
@@ -95,5 +95,9 @@
   </div>
   <button class="floating-btn4" (click)="toggleDarkTheme()">
     <i class="fa fa-sun"></i>
+  </button>
+  <button class="floating-btn5" (click)="changeLanguage()">
+    <i class="fa fa-globe"></i>
+    <h5>{{ 'LANG' | translate }}</h5>
   </button>
 </div>
