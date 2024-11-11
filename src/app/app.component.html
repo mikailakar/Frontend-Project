@@ -1,4 +1,7 @@
 <header class="top-bar">
+  <button (click)="goToHome()" class="home-btn">
+    <i class="fa fa-home"></i>
+  </button>
   <input type="text" class="form-control search-input" placeholder="Search a word" [(ngModel)]="word"
     (keyup.enter)="searchWord()" />
 

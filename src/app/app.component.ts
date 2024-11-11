@@ -121,6 +121,10 @@ export class AppComponent implements OnInit {
   goToPipes(): void {
     this.router.navigate(['/pipes']);
   }
+
+  goToHome(): void {
+    this.router.navigate(['']);
+  }
   
   addToFavorites(item: string): void {
     const addedMessage = this.translate.instant('NOTIFICATIONS.ADDED_TO_FAVORITES');
@@ -165,8 +169,9 @@ export class AppComponent implements OnInit {
     this.loadingSpinner.show();
     this.dictionaryService.getWordDetails(word).pipe(
       catchError(error => {
+        const errormsg = this.translate.instant('NOTIFICATIONS.ERROR_WORD');
         console.error('Error fetching word details', error);
-        this.createNotification('Error fetching word details. Please try again later.');
+        this.createNotification(errormsg);
         this.wordDetails = null;
         return of(null);
       })

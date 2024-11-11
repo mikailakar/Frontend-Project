@@ -8,7 +8,8 @@
   "NOTIFICATIONS": {
     "ADDED_TO_FAVORITES": "Added to favorites!",
     "REMOVED_FROM_FAVORITES": "Removed from favorites!",
-    "REMOVED": "\"{{item}}\" removed from Favorites"
+    "REMOVED": "\"{{item}}\" removed from Favorites",
+    "ERROR_WORD": "Error fetching word details. Please try again later."
   },
   "CONFIRM": {
     "REMOVE": "Are you sure you want to remove \"{{item}}\" from favorites?"

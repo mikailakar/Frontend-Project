@@ -8,7 +8,8 @@
   "NOTIFICATIONS": {
     "ADDED_TO_FAVORITES": "Favorilere eklendi!",
     "REMOVED_FROM_FAVORITES": "Favorilerden kaldırıldı!",
-    "REMOVED": "\"{{item}}\" Favorilerden kaldırıldı"
+    "REMOVED": "\"{{item}}\" Favorilerden kaldırıldı",
+    "ERROR_WORD": "Kelime ayrıntıları alınırken hata oluştu. Lütfen daha sonra tekrar deneyin."
   },
   "CONFIRM": {
     "REMOVE": "\"{{item}}\" favorilerden silmek istediğinize emin misiniz?"

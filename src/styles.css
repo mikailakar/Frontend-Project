@@ -13,6 +13,7 @@ body {
   --spinner-border: #f3f3f3;
   --spinner-color: #3498db;
   --form-bg: #fff;
+  background-color: var(--bkg-color);
 }
 body.dark-theme {
   --text-color: #eee;

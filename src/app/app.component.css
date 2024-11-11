@@ -50,6 +50,13 @@
   color: var(--btn-color);
 }
 
+.home-btn {
+  background: none;
+  border: none;
+  margin-right: 10px;
+  color: var(--btn-color);
+}
+
 .word-section {
   text-align: center;
   margin-top: 20px;
