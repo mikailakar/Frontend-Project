@@ -67,6 +67,12 @@ This project is a dictionary application built using Angular. The application qu
 - Implemented error handling for API requests using RxJS.
 - Showed a spinner while waiting for the API response and ensured the spinner is displayed for at least 1 second to enhance UX.
 
+## Project URL
+
+The project is live and hosted on Vercel:
+
+**[Frontend Project - Vercel Deployment](https://frontend-project-silk.vercel.app)**
+
 ## API References
 
 - [Dictionary API Documentation](https://dictionaryapi.dev/)
