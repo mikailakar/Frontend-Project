@@ -53,11 +53,11 @@ This project is a dictionary application built using Angular. The application qu
 
 ### Dark Mode
 
-- **Dark Mode Toggle**: Implemented a dark mode toggle switch to allow users to switch between light and dark themes.
-- **Theme Service**: Created a service to manage the application's theme state. This service listens for changes in theme preference and updates the UI accordingly.
-- **Local Storage Integration**: The user's theme preference (dark or light mode) is stored in local storage, so the theme persists across sessions.
-- **UI Changes**: The application adjusts background colors, text colors, and button styles based on the selected theme to ensure good contrast and readability.
-- **CSS Variables**: Used CSS variables for theme colors, making it easier to switch between themes dynamically.
+- Implemented a dark mode toggle switch to allow users to switch between light and dark themes.
+- Created a service to manage the application's theme state. This service listens for changes in theme preference and updates the UI accordingly.
+- The user's theme preference (dark or light mode) is stored in local storage, so the theme persists across sessions.
+- The application adjusts background colors, text colors, and button styles based on the selected theme to ensure good contrast and readability.
+- Used CSS variables for theme colors, making it easier to switch between themes dynamically.
 
 To toggle the theme, users can click a button, which triggers the theme change. The change is reflected immediately across all components, and the theme setting is stored in the browser's local storage so the user's preference is maintained when they return to the app.
 
