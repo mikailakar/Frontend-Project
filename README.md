@@ -59,8 +59,6 @@ This project is a dictionary application built using Angular. The application qu
 - The application adjusts background colors, text colors, and button styles based on the selected theme to ensure good contrast and readability.
 - Used CSS variables for theme colors, making it easier to switch between themes dynamically.
 
-To toggle the theme, users can click a button, which triggers the theme change. The change is reflected immediately across all components, and the theme setting is stored in the browser's local storage so the user's preference is maintained when they return to the app.
-
 ### Multi-Language Support (i18n)
 - Integrated i18n for multi-language support, with English and Turkish as the initial languages.
 - Language can be changed via a floating button, and the UI adapts to the selected language.
