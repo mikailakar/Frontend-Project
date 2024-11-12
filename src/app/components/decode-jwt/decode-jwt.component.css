@@ -1,0 +1,10 @@
+.container {
+  max-width: 600px;
+}
+
+pre {
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 5px;
+  overflow-x: auto;
+}

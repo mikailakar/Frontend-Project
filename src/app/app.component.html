@@ -1,106 +1,61 @@
-<header class="top-bar">
-  <button (click)="goToHome()" class="home-btn">
-    <i class="fa fa-home"></i>
-  </button>
-  <input type="text" class="form-control search-input" placeholder="Search a word" [(ngModel)]="word"
-    (keyup.enter)="searchWord()" />
+<header>
+  <nav class="navbar navbar-light bg-light shadow-sm">
+    <div class="container-fluid">
+      <!-- Logo or App name -->
+      <a class="navbar-brand" href="#">Fullstack App</a>
 
-  <button (click)="searchWord()" class="search-btn">
-    <i class="fa fa-search"></i>
-  </button>
-</header>
-<div class="app-container">
+      <!-- Display token if logged in -->
+      <div *ngIf="logedin" class="left-align">
+        <pre class="text-muted" style="font-size: 12px;">Token: {{ token }}</pre>
+      </div>
 
-  <div *ngIf="showNotification" class="notification">
-    {{ notificationMessage }}
-  </div>
-  <app-loading-spinner></app-loading-spinner>
-
-  <div *ngIf="wordDetails" class="word-section">
-    <h1 class="word">{{ wordDetails[0].word }}</h1>
-    <div class="word-icons">
-      <i class="fa fa-heart" [class.favorited]="isFavorite" (click)="addToFavorites(word)"></i>
-    </div>
-  </div>
-  <div *ngIf="wordDetails" class="line-break"></div>
-  <div *ngIf="wordDetails" class="word-section-det">
-    <span class="word-category">{{ wordDetails[0].meanings[0].partOfSpeech }}</span>
-    <p class="word-pronunciation">
-      {{ wordDetails[0].phonetics[0]?.text }}
-      <span *ngIf="wordDetails[0].phonetics[0]?.audio" class="audio">
-        <i class="fa fa-volume-up" (click)="playAudio()"></i>
-      </span>
-      <audio #audioPlayer [src]="wordDetails[0].phonetics[0]?.audio"></audio>
-    </p>
-  </div>
-
-  <div *ngIf="wordDetails" class="synonyms">
-    <p *ngIf="hasSynonyms()">Synonyms:
-      <span *ngFor="let detail of wordDetails">
-        <span *ngFor="let meaning of detail.meanings">
-          <span *ngFor="let synonym of meaning.synonyms">
-            <span *ngIf="!first">, </span>
-            <button class="link-btn" (click)="searchWord(synonym)">{{ synonym }}</button>
-            <ng-template [ngIf]="first">{{resetFirst()}}</ng-template>
-          </span>
-        </span>
-      </span>
-    </p>
-    <div *ngFor="let detail of wordDetails; let i = index">
-      <div *ngFor="let meaning of detail.meanings; let j = index" class="def-block">
-        <p class="pos-p">
-          <button class="link-btn" (click)="searchWord(meaning.partOfSpeech)">{{ meaning.partOfSpeech }}</button>
-        </p>
-        <div class="definition-row">
-          <span class="number">{{getIndex(i, j)}}.</span>
-          <div class="def">
-            <span *ngFor="let synonym of meaning.synonyms; let isLast = last">
-              <button class="link-btn-syn" (click)="searchWord(synonym)">{{ synonym }}</button>
-              <span *ngIf="!isLast">, </span>
-            </span>
-            <p class="def-text">
-              <span *ngFor="let definition of meaning.definitions">
-                {{ definition.definition }}
-              </span>
-            </p>
-          </div>
-        </div>
+      <!-- Navigation buttons -->
+      <div class="d-flex">
+        <button class="btn btn-outline-primary me-2" routerLink="/users">Users</button>
+        <button class="btn btn-outline-success me-2" routerLink="/login" *ngIf="!logedin">Login</button>
+        <button class="btn btn-danger" *ngIf="logedin" (click)="logout()">Logout</button>
       </div>
     </div>
-  </div>
+  </nav>
+</header>
 
-  <div *ngIf="homePage">
-    <h2>{{ 'WELCOME_MESSAGE' | translate: { name: name } }}</h2>
-  </div>
+<router-outlet></router-outlet>
 
-  <div *ngIf="favoritesPage || signupPage">
-    <router-outlet></router-outlet>
-  </div>
+<div *ngIf="this.mainpage" class="container mt-5">
+  <h2 class="text-center mb-4">Dashboard</h2>
+  <div class="row d-flex justify-content-center">
 
-  <div *ngIf="pipesPage">
-    <app-pipes-demo></app-pipes-demo>
-  </div>
+    <div class="col-12 col-md-5 col-lg-3 mb-3">
+      <button 
+        class="btn btn-primary w-100 py-3" 
+        routerLink="/users">
+        <i class="bi bi-people"></i> Users
+      </button>
+    </div>
 
-  <div *ngIf="!favoritesPage">
-    <button class="floating-btn" (click)="goToFavorites()">
-      <i class="fa fa-star"></i>
-    </button>
+    <div class="col-12 col-md-5 col-lg-3 mb-3">
+      <button 
+        class="btn btn-success w-100 py-3" 
+        routerLink="/decode-jwt">
+        <i class="bi bi-file-earmark-lock"></i> Decode JWT Token
+      </button>
+    </div>
+
+    <div class="col-12 col-md-5 col-lg-3 mb-3">
+      <button 
+        class="btn btn-warning w-100 py-3" 
+        routerLink="/user-role">
+        <i class="bi bi-person-badge"></i> Users with Role
+      </button>
+    </div>
+
+    <div class="col-12 col-md-5 col-lg-3 mb-3">
+      <button 
+        class="btn btn-danger w-100 py-3" 
+        routerLink="/user-date">
+        <i class="bi bi-calendar-date"></i> Users by Date
+      </button>
+    </div>
+
   </div>
-  <div *ngIf="!signupPage">
-    <button class="floating-btn2" (click)="goToSignup()">
-      <i class="fa fa-sign-in"></i>
-    </button>
-  </div>
-  <div *ngIf="!pipesPage">
-    <button class="floating-btn3" (click)="goToPipes()">
-      <i class="fa fa-user"></i>
-    </button>
-  </div>
-  <button class="floating-btn4" (click)="toggleDarkTheme()">
-    <i class="fa fa-sun"></i>
-  </button>
-  <button class="floating-btn5" (click)="changeLanguage()">
-    <i class="fa fa-globe"></i>
-    <h5>{{ 'LANG' | translate }}</h5>
-  </button>
 </div>

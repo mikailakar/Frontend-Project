@@ -1,7 +1,0 @@
-<div *ngFor="let item of items">
-  <h3>{{ item.name | titlecase }}</h3>
-  <p>{{ 'PIPES.CURRENCY' | translate }}: {{ item.currency | currency: 'USD' }}</p>
-  <p>{{ 'PIPES.DATE' | translate }}: {{ item.date | date: 'fullDate' }}</p>
-  <p>{{ 'PIPES.UPPER' | translate }}: {{ item.name | uppercase }}</p>
-  <p>{{ 'PIPES.LOWER' | translate }}: {{ item.name | lowercase }}</p>
-</div>
