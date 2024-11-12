@@ -1,0 +1,83 @@
+<form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+  <h2>{{ 'PAGE_TITLE.SIGNUP' | translate }}</h2>
+  
+  <table>
+    <tr>
+      <td>
+        <label for="name">{{ 'FORM.NAME' | translate }}</label>
+      </td>
+      <td>
+        <input id="name" formControlName="name" />
+        <div *ngIf="signupForm.get('name')?.invalid && signupForm.get('name')?.touched">
+          {{ 'FORM.NAME_REQUIRED' | translate }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="number">{{ 'FORM.NUMBER' | translate }}</label>
+      </td>
+      <td>
+        <input id="number" formControlName="number" type="number" />
+        <div *ngIf="signupForm.get('number')?.invalid && signupForm.get('number')?.touched">
+          {{ 'FORM.NUMBER_REQUIRED' | translate }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="email">{{ 'FORM.EMAIL' | translate }}</label>
+      </td>
+      <td>
+        <input id="email" formControlName="email" type="email" />
+        <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched">
+          {{ 'FORM.EMAIL_REQUIRED' | translate }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="password">{{ 'FORM.PASSWORD' | translate }}</label>
+      </td>
+      <td>
+        <input id="password" formControlName="password" type="password" />
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched">
+          {{ 'FORM.PASSWORD_REQUIRED' | translate }}
+        </div>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="city">{{ 'FORM.CITY' | translate }}</label>
+      </td>
+      <td>
+        <select id="city" formControlName="city" (change)="onCityChange($event)">
+          <option value="">{{ 'FORM.SELECT_CITY' | translate }}</option>
+          <option *ngFor="let city of cities" [value]="city.id">{{ city.name }}</option>
+        </select>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <label for="district">{{ 'FORM.DISTRICT' | translate }}</label>
+      </td>
+      <td>
+        <select id="district" formControlName="district">
+          <option value="">{{ 'FORM.SELECT_DISTRICT' | translate }}</option>
+          <option *ngFor="let district of districts" [value]="district.id">{{ district.name }}</option>
+        </select>
+      </td>
+    </tr>
+  </table>
+
+  <button type="submit" [disabled]="signupForm.invalid">{{ 'FORM.SUBMIT' | translate }}</button>
+</form>
+
+<div *ngIf="submittedData" class="submitted-data">
+  <h3>{{ 'FORM.SUBMITTED_DATA' | translate }}:</h3>
+  <p><strong>{{ 'FORM.NAME' | translate }}:</strong> {{ submittedData.name }}</p>
+  <p><strong>{{ 'FORM.NUMBER' | translate }}:</strong> {{ submittedData.number }}</p>
+  <p><strong>{{ 'FORM.EMAIL' | translate }}:</strong> {{ submittedData.email }}</p>
+  <p><strong>{{ 'FORM.CITY' | translate }}:</strong> {{ submittedData.city }}: {{ cityData.name }}</p>
+  <p><strong>{{ 'FORM.DISTRICT' | translate }}:</strong> {{ submittedData.district }}: {{ districtData.name }}</p>
+</div>

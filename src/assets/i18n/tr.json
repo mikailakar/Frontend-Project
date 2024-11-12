@@ -1,0 +1,39 @@
+{
+  "WELCOME_MESSAGE": "{{name}} Hoşgeldin!",
+  "LANG": "TR",
+  "PAGE_TITLE": {
+    "FAVORITES": "Favoriler",
+    "SIGNUP": "Kayıt Ol"
+  },
+  "NOTIFICATIONS": {
+    "ADDED_TO_FAVORITES": "Favorilere eklendi!",
+    "REMOVED_FROM_FAVORITES": "Favorilerden kaldırıldı!",
+    "REMOVED": "\"{{item}}\" Favorilerden kaldırıldı",
+    "ERROR_WORD": "Kelime ayrıntıları alınırken hata oluştu. Lütfen daha sonra tekrar deneyin."
+  },
+  "CONFIRM": {
+    "REMOVE": "\"{{item}}\" favorilerden silmek istediğinize emin misiniz?"
+  },
+  "FORM": {
+    "NAME": "İsim",
+    "NUMBER": "Numara",
+    "EMAIL": "Eposta",
+    "PASSWORD": "Şifre",
+    "CITY": "Şehir",
+    "DISTRICT": "İlçe",
+    "SELECT_CITY": "Şehir seçin",
+    "SELECT_DISTRICT": "İlçe seçin",
+    "SUBMIT": "Onayla",
+    "SUBMITTED_DATA": "Onaylanan Veri",
+    "NAME_REQUIRED": "İsim gerekli.",
+    "NUMBER_REQUIRED": "10 rakam uzulukta olmalı.",
+    "EMAIL_REQUIRED": "Geçersiz eposta biçimi.",
+    "PASSWORD_REQUIRED": "Şifre gerekli."
+  },
+  "PIPES": {
+    "CURRENCY": "Döviz",
+    "DATE": "Tarih",
+    "UPPER": "Büyük Harf Adı",
+    "LOWER": "Küçük Harf Adı"
+  }
+}
